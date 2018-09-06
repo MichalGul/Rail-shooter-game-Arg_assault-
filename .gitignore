@@ -34,3 +34,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.meta
+Rail_shooter/Assets/externalAssets/epyphany/Materials/alienSkin2.mat
+Rail_shooter/Assets/externalAssets/
+Rail_shooter/Assets/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs
+Rail_shooter/Assets/Standard Assets/
