@@ -23,13 +23,16 @@ public class Player : MonoBehaviour {
 
     float xThrow, yThorw;
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        Debug.Log("Playter triggered");
+    }
+
     // Use this for initialization
     void Start ()
     {
 		
-
-
-
 	}
 	
 	// Update is called once per frame
