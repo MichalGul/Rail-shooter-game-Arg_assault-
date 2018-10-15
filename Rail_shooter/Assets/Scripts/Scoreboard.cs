@@ -23,6 +23,7 @@ public class Scoreboard : MonoBehaviour {
 	// Update is called once per frame
     public void ScoreHit(int scorePerHit)
     {
+        //END restore testing with GIT
         score += scorePerHit;
         scoreText.text = score.ToString();
     }
