@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Invoke("LoadNextScene", 5);
+        Invoke("LoadNextScene", 3);
 
     }
 

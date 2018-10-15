@@ -12,14 +12,21 @@ public class MusicPlayer : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        var MusicPlayers = FindObjectsOfType<MusicPlayer>();
+        if(MusicPlayers.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        
     }
 
     void Start()
     {
 
-        startUpSound = GetComponent<AudioSource>();
-        startUpSound.PlayOneShot(startUpClip);
-
+  
     }
 }
