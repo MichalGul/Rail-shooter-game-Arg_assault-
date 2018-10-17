@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour {
 
     BoxCollider boxCollider;
 
-    [SerializeField]
-    private GameObject deathFx;
+    [SerializeField] private GameObject deathFx;
     [SerializeField] Transform parent;
+    [SerializeField] int scorePerHit = 12;
+    [SerializeField] int healthPoints = 100;
+    [SerializeField] int health = 10;
 
-    [SerializeField]
-    int scorePerHit = 12;
 
     Scoreboard scoreBoard;
 
@@ -31,12 +31,26 @@ public class Enemy : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        GameObject fxEffect = Instantiate(deathFx, transform.position, Quaternion.identity);
-        fxEffect.transform.parent = parent;
-        print("Particles collided with enemy " + gameObject.name);
+        ProccesHit();
+
+        if (health <= 0)
+        {
+            KillEnemy();
+        }
+    }
+
+    private void ProccesHit()
+    {
         //Score hit foe enemy
         scoreBoard.ScoreHit(scorePerHit);
+        //todo consider hit FX
+        health = health - 1;
+    }
+
+    private void KillEnemy()
+    {
+        GameObject fxEffect = Instantiate(deathFx, transform.position, Quaternion.identity);
+        fxEffect.transform.parent = parent;
         Destroy(this.gameObject);
-       
     }
 }

@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] [Range(0, 15)][Tooltip("In m")]
     float yMax = 4.17f;
 
+    [SerializeField]
+    GameObject[] guns;
+
     [Header("Screen-position based")]
     [SerializeField] float positionPitchFactor = -6f;// wspolczynnik pochylenia w zaleznosci od odleglosci od srodka obrazu 
     [SerializeField] float controlRollFactor = -14f;
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour {
     Scoreboard scoreBoard;
     float timeToScore = 10.0f;
 
+
+   
+
     private void Awake()
     {
         scoreBoard = FindObjectOfType<Scoreboard>();
@@ -51,8 +57,25 @@ public class PlayerController : MonoBehaviour {
             ProcessTranslation();
             ProcessRotation();
             ProccesBeingAlive(timeToScoreInterval);
+            ProccesFiring();
         }
     }
+
+    private void ProccesFiring()
+    {
+        
+        if(CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactivateGuns();
+        }
+
+    }
+
+ 
 
     private void ProcessRotation()
     {
@@ -110,5 +133,24 @@ public class PlayerController : MonoBehaviour {
     {
         scoreBoard.TimeHit(points);
     }
+
+
+    private void ActivateGuns()
+    {
+        foreach (var gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (var gun in guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
+
 
 }
