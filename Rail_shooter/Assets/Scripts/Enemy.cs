@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private GameObject deathFx;
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 12;
-    [SerializeField] int healthPoints = 100;
     [SerializeField] int health = 10;
 
 
